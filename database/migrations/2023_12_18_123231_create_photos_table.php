@@ -13,7 +13,11 @@ return new class extends Migration
     {
         Schema::create('photos', function (Blueprint $table) {
             $table->id();
-            $table->longText('link');
+            $table->integer('reference');
+            $table->integer('albumn');
+            $table->text('title');
+            $table->longText('url');
+            $table->longText('thumb');
             $table->timestamps();
         });
     }

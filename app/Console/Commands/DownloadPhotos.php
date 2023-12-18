@@ -2,6 +2,8 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Photo;
+use App\Services\JSONPlaceholder;
 use Illuminate\Console\Command;
 
 class DownloadPhotos extends Command
@@ -25,6 +27,21 @@ class DownloadPhotos extends Command
      */
     public function handle()
     {
-        dd("descargar");
+        if($data = JSONPlaceholder::getData())
+        {
+            foreach ($data as $item) {
+
+                Photo::firstOrCreate([
+                    'reference' => $item["id"],
+                    ],[
+                    'albumn' => $item["albumId"],
+                    'title' => $item["title"],
+                    'url' => $item["url"],
+                    'thumb' => $item["thumbnailUrl"],
+                ]);
+          
+            }
+            
+        }
     }
 }
