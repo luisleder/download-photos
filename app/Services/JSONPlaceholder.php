@@ -35,6 +35,8 @@ class JSONPlaceholder{
                 echo "Format not valid";
                 return false;
             }
+            
+            return true;
 
         } catch (ValidationException) {
             echo "Validation Error";
@@ -66,7 +68,10 @@ class JSONPlaceholder{
             $statusCode = $response->getStatusCode();
             $body = $response->getBody()->getContents();
             $data = json_decode($body, true);
-            self::validateResponse($data);
+            if(self::validateResponse($data))
+            {
+                return false;
+            }
 
             return $data;
 
