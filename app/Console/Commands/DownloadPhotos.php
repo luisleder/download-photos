@@ -18,13 +18,13 @@ class DownloadPhotos extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Download photos from jsonplaceholder.typicode.com';
 
     /**
      * Execute the console command.
      */
     public function handle()
     {
-        //
+        dd("descargar");
     }
 }
